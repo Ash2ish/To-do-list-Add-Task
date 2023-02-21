@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" type="text/css" href="\css\style.css">
+    <script src="https://kit.fontawesome.com/f3d3bcd31b.js" crossorigin="anonymous"></script>
+    <script src="Assest\js\script.js" defer></script>
+    <script src="" defer></script>
+    
+</head>
+
+<body>
+    <div id="container">
+        <div id="upper">
+            <div id="title-box">
+               
+                
+    <h1 id="title-text2" style="font-family: sans-serif; ">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;𝒜𝓈𝒽𝒾𝓈𝒽-𝒯𝑜𝒹𝑜𝓁𝒾𝓈𝓉
+    </h1>
+            </div>
+            <div id="form-container">
+                <form action="/add-task" method="post">
+                    <div id="task-container">
+                        <span class="container-heading">
+                          &nbsp; 𝓓𝓔𝓢𝓒𝓡𝓘𝓟𝓣𝓘𝓞𝓝
+                        </span>
+                        <textarea name="task" placeholder="&nbsp;𝒲𝒽𝒶𝓉 𝒹𝑜 𝓎𝑜𝓊 𝓌𝒶𝓃𝓉 𝓉𝑜 𝒹𝑜?" required></textarea>
+                    </div>
+                    <div id="select-container">
+                        <span class="container-heading">
+                            &nbsp; 𝓒𝓐𝓣𝓔𝓖𝓞𝓡𝓨
+                          </span>
+                        <select name="category" id="drop-down" required> 
+                            <option value="">𝒞𝒽𝑜𝑜𝓈𝑒 𝒶 𝒸𝒶𝓉𝑒𝑔𝑜𝓇𝓎</option>
+                            <option value="Personal">𝒫𝑒𝓇𝓈𝑜𝓃𝒶𝓁</option>
+                            <option value="Work">𝒲𝑜𝓇𝓀</option>
+                            <option value="School">𝒮𝒸𝒽𝑜𝑜𝓁</option>
+                            <option value="Cleaning">𝒞𝓁𝑒𝒶𝓃𝒾𝓃𝑔</option>
+                            <option value="Other">𝒪𝓉𝒽𝑒𝓇</option>
+                        </select>
+                    </div>
+                    <div id="date-container">
+                        <span class="container-heading">
+                                &nbsp; 𝓓𝓤𝓔 𝓓𝓐𝓣𝓔
+                              </span>
+                        <input id="date-input" type="date" name="date">
+                    </div>
+
+                    <div id="btn-container">
+                        <button class="add-btn" type="submit"><i class="fas fa-plus"></i> <span id="button-text"> &nbsp; Add Task</span></button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+        <div id="lower">
+            <div id="list">
+                <ul>
+                    <form action="/delete-task/" method="GET">
+                        <% for(let i of tasks) {%>
+                            <li>
+                                <span id="checkbox-container">
+                                    <input id="check" type="checkbox" name="<%= i._id %>">
+                                </span>
+                                <div style="display: inline-block;">
+                                    <span id="list-task"><%= i.task %></span> <br>
+                                    <span id="list-date"><i class="fa fa-calendar" aria-hidden="true"></i><span id="task-date-value"> <%= i.date %></span></span>
+                                </div>
+                                <div class="list-category">
+                                    <p id="category-box-text">
+                                        <%= i.category %>
+                                    </p>
+                                </div>
+
+                            </li>
+                            <%} %>
+                                <button id="del-btn" type="submit"><i class="fas fa-trash"></i><span id="button-text" 
+                                    style="position: relative; top: -1px;">&nbsp;&nbsp; Delete Tasks</span></button>
+                    </form>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+
+</html>
